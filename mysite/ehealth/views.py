@@ -18,3 +18,8 @@ def cur_time(request):
 def hello(request):
     html = "<html><body>Hello there!</body></html>"
     return HttpResponse(html)
+
+def dashboard(request):
+    template = loader.get_template("ehealth/dashboard.html")
+    context = {}
+    return HttpResponse(template.render(context, request))
