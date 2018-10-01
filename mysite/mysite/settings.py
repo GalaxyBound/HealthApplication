@@ -122,6 +122,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
+AUTH_USER_MODEL = 'ehealth.CustomUser'
+
+
+
 # Channel Layer Definitions
 
 ASGI_APPLICATION = 'mysite.routing.application'
