@@ -71,7 +71,8 @@ class EmergencyContact(models.Model):
 # Eventually must update health data to Arduino specifications
 class HealthData(models.Model):
 	data = models.CharField(max_length=500)
-	rec_date = models.DateTimeField('recorded')
+	# TODO: Implement
+	# rec_date = models.DateTimeField('recorded')
 
 
 # # Subclass of base user class; patients are registered as potential victims of a heart attack
@@ -85,7 +86,7 @@ class Patient(models.Model):
 	allergies = models.CharField(max_length=300)
 
 	def __str__(self):
-		return self.user.username
+		return self.user.name
 
 
 # Subclass of base user class; responders are registered to help patients in case of heart attacks
@@ -95,7 +96,7 @@ class Responder(models.Model):
 	expiration_date = models.DateField(verbose_name='certification expiration date')
 
 	def __str__(self):
-		return self.user.username
+		return self.user.name
 
 
 
