@@ -8,6 +8,7 @@ from django.contrib.auth import login
 from django.shortcuts import redirect
 from django.views.generic import CreateView, TemplateView
 from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
 
 from .forms import PatientRegisterForm, ResponderRegisterForm
 from .models import CustomUser
@@ -86,6 +87,22 @@ def signup_confirm(request):
     context = {}
     return HttpResponse(template.render(context, request))
 
+@csrf_exempt
+def test_post(request):
+    # Get POST data
+    postData = request.POST
+    getData  = request.GET
+
+    if postData is None and getData is None:
+        return HttpResponse("<html><body>Error: No data was sent.</body></html>")
+    
+    
+    print("POST Data: " + str(request.POST))
+    print("GET Data: " + str(request.GET))
+
+    context = {"post" : postData, "get" : getData}
+
+    return JsonResponse(context)
 
 # def home(request):
 #     if request.user.is_authenticated:

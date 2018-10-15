@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'signup/responder', views.signup_responder, name='signup_responder'),
     url(r'signup/confirm', views.signup_confirm, name='signup_confirm'),
     url(r'signup', views.signup, name='signup'),
+    url(r'test', views.test_post, name='test_post'),
     # url('accounts/', include('django.contrib.auth.urls')),
     # url('accounts/register/', views.SignUpView.as_view(), name='signup'),
     # url('accounts/register/patient/', views.PatientRegisterView.as_view(), name='patient_register'),
