@@ -13,6 +13,7 @@ class PatientRegisterForm(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
         model = CustomUser
+        fields = ('username', 'first_name', 'last_name', 'email', 'dob', 'phone_number', 'password1', 'password2',)
 
     @transaction.atomic
     def save(self):
