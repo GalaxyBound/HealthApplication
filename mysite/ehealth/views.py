@@ -32,6 +32,26 @@ def dashboard(request):
     context = {}
     return HttpResponse(template.render(context, request))
 
+def map(request):
+    template = loader.get_template("ehealth/map.html")
+    context = {}
+    return HttpResponse(template.render(context, request))
+
+def signin(request):
+    template = loader.get_template("ehealth/signin.html")
+    context = {}
+    return HttpResponse(template.render(context, request))
+
+def index(request):
+    template = loader.get_template("ehealth/index.html")
+    context = {}
+    return HttpResponse(template.render(context, request))
+
+def help(request):
+    template = loader.get_template("ehealth/help.html")
+    context = {}
+    return HttpResponse(template.render(context, request))
+
 
 # def home(request):
 #     if request.user.is_authenticated:
