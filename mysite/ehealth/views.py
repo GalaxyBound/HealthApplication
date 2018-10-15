@@ -7,6 +7,7 @@ from django.template import loader
 from django.contrib.auth import login
 from django.shortcuts import redirect
 from django.views.generic import CreateView, TemplateView
+from django.views.decorators.csrf import csrf_exempt
 
 from .forms import PatientRegisterForm, ResponderRegisterForm
 from .models import CustomUser
@@ -49,6 +50,27 @@ def index(request):
 
 def help(request):
     template = loader.get_template("ehealth/help.html")
+    context = {}
+    return HttpResponse(template.render(context, request))
+
+def signup(request):
+    template = loader.get_template("ehealth/signup.html")
+    context = {}
+    return HttpResponse(template.render(context, request))
+
+def signup_patient(request):
+    template = loader.get_template("ehealth/signup-patient.html")
+    context = {}
+    return HttpResponse(template.render(context, request))
+
+def signup_responder(request):
+    template = loader.get_template("ehealth/signup-responder.html")
+    context = {}
+    return HttpResponse(template.render(context, request))
+
+@csrf_exempt
+def signup_confirm(request):
+    template = loader.get_template("ehealth/signup-post.html")
     context = {}
     return HttpResponse(template.render(context, request))
 
