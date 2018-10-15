@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <style>
+       /* Set the size of the div element that contains the map */
+      #map {
+        height: 400px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+       }
+    </style>
+  </head>
+  <body>
+        <ul class="nav nav-pills">
+                <li role="presentation" ><a href="index.html">Home</a></li>
+                <li role="presentation" class="active"><a href="map.html">Nearest AED'S</a></li>
+                <li role="presentation"><a href="Siign In.html">Sign In</a></li>
+        </ul>
+    <!--The div element for the map -->
+    <div id="map"></div>
+    <script>
+    // Initialize and add the map
+    function initMap() {
+        
+        // The location of AED'S Around
+        
+        var PNR = {lat: -33.890257, lng: 151.192992};
+        var MECH = {lat: -33.889187, lng: 151.193853};
+        var SEYM = {lat: -33.88852794, lng: 151.1933081};
+        var ABER = {lat: -33.8921265, lng: 151.1909577};
+        var MERE = {lat: -33.890256, lng: 151.190216};
+        var SERV = {lat: -33.891952, lng: 151.191733};
+        var map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 17, center: PNR});
+            var marker1 = new google.maps.Marker({position: PNR, map: map});
+            var marker2 = new google.maps.Marker({position: MECH, map: map});
+            var marker3 = new google.maps.Marker({position: SEYM, map: map});
+            var marker4 = new google.maps.Marker({position: ABER, map: map});
+            var marker5 = new google.maps.Marker({position: MERE, map: map});
+            var marker6 = new google.maps.Marker({position: SERV, map: map});
+}
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4C2T6s8QffnW81K-4h_KJdRMQICvMOkA&callback=initMap">
+    </script>
+  </body>
+</html>
