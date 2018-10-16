@@ -87,6 +87,10 @@ class Patient(models.Model):
 
 	def __str__(self):
 		return self.user.name
+	
+	def register(postData):
+		
+		return True
 
 
 # Subclass of base user class; responders are registered to help patients in case of heart attacks
