@@ -12,8 +12,9 @@
        /* Set the size of the div element that contains the map */
       #map {
         height: 400px;  /* The height is 400 pixels */
-        width: 100%;  /* The width is the width of the web page */
+        width: 75%;  /* The width is the width of the web page */
        }
+
     </style>
   </head>
   <body>
@@ -23,8 +24,10 @@
                 <li role="presentation"><a href="help">SOS</a></li>
                 <li role="presentation"><a href="login">Sign Out</a></li>
         </ul>
+
+        
     <!--The div element for the map -->
-    <div id="map"></div>
+    <div id="map"style="width:600px;height:400px;margin-left:auto;margin-right:auto;">
     <script>
     // Initialize and add the map
     function initMap() {
@@ -44,7 +47,7 @@
             var marker3 = new google.maps.Marker({position: SEYM, map: map});
             var marker4 = new google.maps.Marker({position: ABER, map: map});
             var marker5 = new google.maps.Marker({position: MERE, map: map});
-            var marker6 = new google.maps.Marker({position: SERV, map: map});
+            var marker6 = new google.maps.Marker({position: SERV, map: map});          
 }
     </script>
     <!--Load the API from the specified URL
@@ -55,5 +58,18 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4C2T6s8QffnW81K-4h_KJdRMQICvMOkA&callback=initMap">
     </script>
+    </div>
+
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title">Map of the Nearest ADE's</h3>
+      </div>
+      <div class="panel-body">
+        <p>This is a mp that give the locations of Automatic extermal Defibulators nearest to you and the paitent in need of assistance.</p>
+
+        <p>The ADE's are marked in RED</p>
+        <p>The Patients location is marked in GREEN</p>
+      </div>
+    </div>
   </body>
 </html>

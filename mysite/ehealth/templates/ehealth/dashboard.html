@@ -8,7 +8,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="main.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.1/raphael-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.2.9/justgage.js"></script>
+    <style>
+        body {
+          text-align: center;
+        }
+  
+        #g1 {
+          width:400px; height:320px;
+          display: inline-block;
+          margin: 1em;
+        }
+  
+        #g2, #g3, #g4 {
+          width:170px; height:100px;
+          display: inline-block;
+          margin: 1em;
+        }
+      </style>
 </head>
 <body>
     <ul class="nav nav-pills">
@@ -18,9 +36,77 @@
         <li role="presentation"><a href="login">Sign Out</a></li>
       </ul>
 
-      <p>INSERT DIAL</p>
-      <p>INSERT SUMMARIES OF CONDITIONS</p>
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title">The Dashboard</h3>
+        </div>
+        <div class="panel-body">
+          <p>This is your dashboard.The dashboard displays different statistics that give you a guide as to what your overall health is at the preseent time.</p>
+        </div>
+      </div>
 
-      
+    <div id="g1"></div>
+    <div id="g2"></div>
+    <div id="g3"></div>
+    <div id="g4"></div>
+
+
+    <script>
+      var g1, g2, g3, g4;
+
+      window.onload = function(){
+        var g1 = new JustGage({
+          id: "g1",
+          value: getRandomInt(0, 100),
+          min: 0,
+          max: 100,
+          title: "Big Fella",
+          label: "Overall Health"
+        });
+
+        var g2 = new JustGage({
+          id: "g2",
+          value: getRandomInt(0, 100),
+          min: 25,
+          max: 40,
+          title: "Small Buddy",
+          label: "Temperature"
+        });
+
+        var g3 = new JustGage({
+          id: "g3",
+          value: getRandomInt(0, 100),
+          min: 0,
+          max: 220,
+          title: "Tiny Lad",
+          label: "ECG (Heart Rate)"
+        });
+
+        var g4 = new JustGage({
+          id: "g4",
+          value: getRandomInt(0, 100),
+          min: 95,
+          max: 100,
+          title: "Little Pal",
+          label: "SPO2 Level"
+        });
+
+        setInterval(function() {
+          g1.refresh(getRandomInt(0, 100));
+          g2.refresh(getRandomInt(25, 40));
+          g3.refresh(getRandomInt(0, 220));
+          g4.refresh(getRandomInt(95, 100));
+        }, 1000);
+      };
+    </script>
+
+<div class="panel panel-danger">
+    <div class="panel-heading">
+      <h3 class="panel-title">Disclaimer</h3>
+    </div>
+    <div class="panel-body">
+      <p>This data is ony a guide and any chnages in your health you should seek medical advise form you doctor.</p>
+    </div>
+  </div>
 </body>
 </html>
