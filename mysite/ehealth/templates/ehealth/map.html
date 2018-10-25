@@ -25,39 +25,61 @@
                 <li role="presentation"><a href="login">Sign Out</a></li>
         </ul>
 
+        <div id="map" style="width:600px;height:400px;margin-left:auto;margin-right:auto;"></div>
+        <script>
+          var map;
+          function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 16,
+              center: new google.maps.LatLng(-33.91722, 151.23064),
+              mapTypeId: 'roadmap'
+            });
+
+            var PNR = {lat: -33.890257, lng: 151.192992};
+            var MECH = {lat: -33.889187, lng: 151.193853};
+            var SEYM = {lat: -33.88852794, lng: 151.1933081};
+            var ABER = {lat: -33.8921265, lng: 151.1909577};
+            var MERE = {lat: -33.890256, lng: 151.190216};
+            var SERV = {lat: -33.891952, lng: 151.191733};
+            var map = new google.maps.Map(
+                document.getElementById('map'), {zoom: 17, center: PNR});
+                  var marker1 = new google.maps.Marker({position: PNR, map: map});
+                  var marker2 = new google.maps.Marker({position: MECH, map: map});
+                  var marker3 = new google.maps.Marker({position: SEYM, map: map});
+                  var marker4 = new google.maps.Marker({position: ABER, map: map});
+                  var marker5 = new google.maps.Marker({position: MERE, map: map});
+                  var marker6 = new google.maps.Marker({position: SERV, map: map}); 
+    
+            var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+            var icons = {
+              parking: {
+                icon: iconBase + 'parking_lot_maps.png'
+              }
+            };
+    
+            var features = [
+             {
+                position: new google.maps.LatLng(-33.8897964,151.1912043),
+                type: 'parking'
+              }
+            ];
+    
+            // Create markers.
+            features.forEach(function(feature) {
+              var marker = new google.maps.Marker({
+                position: feature.position,
+                icon: icons[feature.type].icon,
+                map: map
+              });
+            });
+          }
+        </script>
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4C2T6s8QffnW81K-4h_KJdRMQICvMOkA&callback=initMap">
+        </script>
+    
         
-    <!--The div element for the map -->
-    <div id="map"style="width:600px;height:400px;margin-left:auto;margin-right:auto;">
-    <script>
-    // Initialize and add the map
-    function initMap() {
-        
-        // The location of AED'S Around
-        
-        var PNR = {lat: -33.890257, lng: 151.192992};
-        var MECH = {lat: -33.889187, lng: 151.193853};
-        var SEYM = {lat: -33.88852794, lng: 151.1933081};
-        var ABER = {lat: -33.8921265, lng: 151.1909577};
-        var MERE = {lat: -33.890256, lng: 151.190216};
-        var SERV = {lat: -33.891952, lng: 151.191733};
-        var map = new google.maps.Map(
-            document.getElementById('map'), {zoom: 17, center: PNR});
-            var marker1 = new google.maps.Marker({position: PNR, map: map});
-            var marker2 = new google.maps.Marker({position: MECH, map: map});
-            var marker3 = new google.maps.Marker({position: SEYM, map: map});
-            var marker4 = new google.maps.Marker({position: ABER, map: map});
-            var marker5 = new google.maps.Marker({position: MERE, map: map});
-            var marker6 = new google.maps.Marker({position: SERV, map: map});          
-}
-    </script>
-    <!--Load the API from the specified URL
-    * The async attribute allows the browser to render the page while the API loads
-    * The key parameter will contain your own API key (which is not needed for this tutorial)
-    * The callback parameter executes the initMap() function
-    -->
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4C2T6s8QffnW81K-4h_KJdRMQICvMOkA&callback=initMap">
-    </script>
+    
     </div>
 
     <div class="panel panel-danger">
