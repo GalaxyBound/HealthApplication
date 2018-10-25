@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'signup/confirm', views.signup_confirm, name='signup_confirm'),
     url(r'signup', views.signup, name='signup'),
     url(r'test', views.test_post, name='test_post'),
+    url(r'log/vitals', views.sent_health, name='sent_health'),
     # url('accounts/', include('django.contrib.auth.urls')),
     # url('accounts/register/', views.SignUpView.as_view(), name='signup'),
     # url('accounts/register/patient/', views.PatientRegisterView.as_view(), name='patient_register'),

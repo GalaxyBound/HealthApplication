@@ -70,7 +70,9 @@ class EmergencyContact(models.Model):
 
 # Eventually must update health data to Arduino specifications
 class HealthData(models.Model):
-	data = models.CharField(max_length=500)
+	spo2 = models.CharField(max_length=500)
+	temp = models.CharField(max_length=500)
+	heartrate = models.CharField(max_length=500)
 	# TODO: Implement
 	# rec_date = models.DateTimeField('recorded')
 
