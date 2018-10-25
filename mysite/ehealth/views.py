@@ -11,7 +11,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 
 from .forms import PatientRegisterForm, ResponderRegisterForm
-from .models import CustomUser
+from .models import CustomUser, HealthData
 
 
 # Create your views here.
@@ -103,6 +103,26 @@ def test_post(request):
     context = {"post" : postData, "get" : getData}
 
     return JsonResponse(context)
+
+@csrf_exempt
+def sent_health(request):
+    # Get POST data
+    postData = request.POST
+
+    if postData is None:
+        return HttpResponse("<html><body>Error: No data was sent.</body></html>")
+    
+    
+    print("Health Stats Received: " + str(request.POST))
+    hr_float = float(postData.get('heartrate', '0.0'))
+    spo2_float = postData.get('spo2', '0.0')
+    temp_float = postData.get('temp', '0.0')
+
+    healthObj = HealthData(heartrate = hr_float, spo2 = spo2_float, temp = temp_float)
+
+    healthObj.save()
+
+    return JsonResponse({"data" : "received"})
 
 # def home(request):
 #     if request.user.is_authenticated:
