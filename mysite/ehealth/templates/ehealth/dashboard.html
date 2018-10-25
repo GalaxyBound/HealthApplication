@@ -61,7 +61,12 @@
           min: 0,
           max: 100,
           title: "Big Fella",
-          label: "Overall Health"
+          label: "Overall Health",
+          levelColors: [
+          "#ff1500",
+          "#ff8000",
+          "#4fff03"
+        ]
         });
 
         var g2 = new JustGage({
@@ -70,7 +75,12 @@
           min: 25,
           max: 40,
           title: "Small Buddy",
-          label: "Temperature"
+          label: "Temperature",
+          levelColors: [
+          "#ff1500",
+          "#ff8000",
+          "#4fff03"
+        ]
         });
 
         var g3 = new JustGage({
@@ -79,7 +89,12 @@
           min: 0,
           max: 220,
           title: "Tiny Lad",
-          label: "ECG (Heart Rate)"
+          label: "ECG (Heart Rate)",
+          levelColors: [
+          "#4fff03",
+          "#ff8000",
+          "#ff1500"
+        ]
         });
 
         var g4 = new JustGage({
@@ -88,14 +103,19 @@
           min: 95,
           max: 100,
           title: "Little Pal",
-          label: "SPO2 Level"
+          label: "SPO2 Level",
+          levelColors: [
+          "#ff1500",
+          "#ff8000",
+          "#4fff03"
+        ]
         });
 
         setInterval(function() {
-          g1.refresh(getRandomInt(0, 100));
-          g2.refresh(getRandomInt(25, 40));
-          g3.refresh(getRandomInt(0, 220));
-          g4.refresh(getRandomInt(95, 100));
+          g1.refresh(getRandomInt(75, 80));
+          g2.refresh(getRandomInt(34, 38));
+          g3.refresh(getRandomInt(75, 85));
+          g4.refresh(getRandomInt(97, 99));
         }, 1000);
       };
     </script>
