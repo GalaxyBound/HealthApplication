@@ -67,7 +67,8 @@ def signup_patient(request):
 
 def signup_responder(request):
     template = loader.get_template("ehealth/signup-responder.html")
-    context = {}
+    form = ResponderRegisterForm()
+    context = {'form': form}
     return HttpResponse(template.render(context, request))
 
 @csrf_exempt
@@ -78,12 +79,11 @@ def signup_confirm(request):
     if postData is None:
         return HttpResponse("<html><body>Error: No data was sent.</body></html>")
     
-    print("Registering new user: " + request.POST.get("firstName"))
+    print("Registering new user: " + request.POST.get("first_name"))
 
 
 
-    template = loader.get_template("ehealth/signup-post.html")
-    breakpoint()
+    template = loader.get_template("ehealth/dashboard.html")
     context = {}
     return HttpResponse(template.render(context, request))
 
