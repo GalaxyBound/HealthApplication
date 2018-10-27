@@ -8,7 +8,7 @@
     <meta name="description" content="Sign Up Page">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Signup - Patient</title>
+    <title>Signup - Responder</title>
 
     <!-- Bootstrap core CSS -->
     <!-- Latest compiled and minified CSS -->
@@ -22,7 +22,7 @@
     <div class="container">
 
       <form class="form-signup" method="post" action="confirm">
-        <h2 class="form-signup-heading">Signup as a patient</h2>
+        <h2 class="form-signup-heading">Signup as a responder</h2>
         <form>
             {% csrf_token %}
             {% for field in form %}
@@ -46,7 +46,7 @@
           <label for="lastName" class="sr-only">Last Name</label>
           <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Smith" required>-->
           <input type="submit" value="Sign Up" />
-        </form> 
+        </form>
       </form>
 
     </div> <!-- /container -->
