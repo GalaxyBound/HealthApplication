@@ -41,7 +41,7 @@
           <h3 class="panel-title">The Dashboard</h3>
         </div>
         <div class="panel-body">
-          <p>This is your dashboard.The dashboard displays different statistics that give you a guide as to what your overall health is at the preseent time.</p>
+          <p>This is your dashboard. The dashboard displays different statistics that give you a guide as to what your overall health is at the present time.</p>
         </div>
       </div>
 
@@ -51,82 +51,122 @@
     <div id="g4"></div>
 
 
-    <script>
-      var g1, g2, g3, g4;
-
-      window.onload = function(){
-        var g1 = new JustGage({
-          id: "g1",
-          value: getRandomInt(0, 100),
-          min: 0,
-          max: 100,
-          title: "Big Fella",
-          label: "Overall Health",
-          levelColors: [
-          "#ff1500",
-          "#ff8000",
-          "#4fff03"
-        ]
-        });
-
-        var g2 = new JustGage({
-          id: "g2",
-          value: getRandomInt(0, 100),
-          min: 25,
-          max: 40,
-          title: "Small Buddy",
-          label: "Temperature",
-          levelColors: [
-          "#ff1500",
-          "#ff8000",
-          "#4fff03"
-        ]
-        });
-
-        var g3 = new JustGage({
-          id: "g3",
-          value: getRandomInt(0, 100),
-          min: 0,
-          max: 220,
-          title: "Tiny Lad",
-          label: "ECG (Heart Rate)",
-          levelColors: [
-          "#4fff03",
-          "#ff8000",
-          "#ff1500"
-        ]
-        });
-
-        var g4 = new JustGage({
-          id: "g4",
-          value: getRandomInt(0, 100),
-          min: 95,
-          max: 100,
-          title: "Little Pal",
-          label: "SPO2 Level",
-          levelColors: [
-          "#ff1500",
-          "#ff8000",
-          "#4fff03"
-        ]
-        });
-
-        setInterval(function() {
-          g1.refresh(getRandomInt(75, 80));
-          g2.refresh(getRandomInt(34, 38));
-          g3.refresh(getRandomInt(75, 85));
-          g4.refresh(getRandomInt(97, 99));
-        }, 1000);
-      };
-    </script>
+    
 
 <div class="panel panel-danger">
     <div class="panel-heading">
       <h3 class="panel-title">Disclaimer</h3>
     </div>
     <div class="panel-body">
-      <p>This data is ony a guide and any chnages in your health you should seek medical advise form you doctor.</p>
+      <p>This data is ony a guide and any changes in your health you should seek medical advice from your doctor.</p>
     </div>
   </div>
+  <script>
+var g1, g2, g3, g4;
+
+window.onload = function(){
+  g1 = new JustGage({
+    id: "g1",
+    value: 0,
+    min: 0,
+    max: 100,
+    title: "Big Fella",
+    label: "Overall Health",
+    levelColors: [
+    "#ff1500",
+    "#ff8000",
+    "#4fff03"
+  ]
+  });
+
+  g2 = new JustGage({
+    id: "g2",
+    value: 0,
+    min: 25,
+    max: 40,
+    title: "Small Buddy",
+    label: "Temperature",
+    levelColors: [
+    "#ff1500",
+    "#ff8000",
+    "#4fff03"
+  ]
+  });
+
+  g3 = new JustGage({
+    id: "g3",
+    value: 0,
+    min: 0,
+    max: 220,
+    title: "Tiny Lad",
+    label: "ECG (Heart Rate)",
+    levelColors: [
+    "#4fff03",
+    "#ff8000",
+    "#ff1500"
+  ]
+  });
+
+  g4 = new JustGage({
+    id: "g4",
+    value: getRandomInt(0, 100),
+    min: 95,
+    max: 100,
+    title: "Little Pal",
+    label: "SPO2 Level",
+    levelColors: [
+    "#ff1500",
+    "#ff8000",
+    "#4fff03"
+  ]
+  });
+
+  // setInterval(function() {
+  //   g1.refresh(getRandomInt(75, 80));
+  //   g2.refresh(getRandomInt(34, 38));
+  //   g3.refresh(getRandomInt(75, 85));
+  //   g4.refresh(getRandomInt(97, 99));
+  // }, 1000);
+};
+    var roomName = 'demo';
+
+    var vitalSocket = new WebSocket(
+        'ws://' + window.location.host +
+        '/ws/vitals/' + roomName + '/');
+
+    vitalSocket.onmessage = function(e) {
+        var data = JSON.parse(e.data);
+        console.error(data)
+        var heartrate = data['heartrate'];
+        var spo2 = data['spo2'];
+        var temp = data['temp'];
+
+        g1.refresh(50);
+        g2.refresh(heartrate);
+        g3.refresh(spo2);
+        g4.refresh(temp);
+    };
+
+    vitalSocket.onclose = function(e) {
+        console.error('Chat socket closed unexpectedly');
+    };
+
+    document.querySelector('#chat-message-input').focus();
+    document.querySelector('#chat-message-input').onkeyup = function(e) {
+        if (e.keyCode === 13) {  // enter, return
+            document.querySelector('#chat-message-submit').click();
+        }
+    };
+
+    document.querySelector('#chat-message-submit').onclick = function(e) {
+        var messageInputDom = document.querySelector('#chat-message-input');
+        var message = messageInputDom.value;
+        vitalSocket.send(JSON.stringify({
+            'message': message
+        }));
+
+        messageInputDom.value = '';
+    };
+</script>
 </body>
 </html>

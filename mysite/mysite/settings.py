@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'ehealth.apps.EhealthConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'channels',
 ]
 
 MIDDLEWARE = [
@@ -136,10 +136,19 @@ ASGI_APPLICATION = 'mysite.routing.application'
 
 # CHANNEL_LAYERS = {
 #     "default" : {
-#         "BACKEND" : "asgi_redis.RedisChannelLayer",
+#         "BACKEND" : "asgiredis.RedisChannelLayer",
 #         "CONFIG" : {
 #             "hosts" : [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
 #         },
-#         "ROUTING" : "chat.routing.channel_routing",
+#         #"ROUTING" : "ehealth.routing.channel_routing",
 #     },
 # }
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}

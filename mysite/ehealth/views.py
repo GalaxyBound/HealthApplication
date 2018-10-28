@@ -13,6 +13,13 @@ from django.http import JsonResponse
 from .forms import PatientRegisterForm, ResponderRegisterForm
 from .models import CustomUser, HealthData
 
+from django.shortcuts import HttpResponse
+
+from channels.layers import get_channel_layer
+
+from asgiref.sync import async_to_sync
+import json
+
 
 # Create your views here.
 from django.http import HttpResponse
@@ -121,6 +128,17 @@ def sent_health(request):
     healthObj = HealthData(heartrate = hr_float, spo2 = spo2_float, temp = temp_float)
 
     healthObj.save()
+
+    toWebSocket = {'type' : "vitals.alarm",
+                   "heartrate" : hr_float,
+                   "spo2" : spo2_float,
+                   "temp" : temp_float}
+    
+    wrapper = {'type' : "vitals.alarm",
+               "text" : json.dumps(toWebSocket)}
+
+    layer = get_channel_layer()
+    async_to_sync(layer.group_send)('vitals', wrapper)
 
     return JsonResponse({"data" : "received"})
 
