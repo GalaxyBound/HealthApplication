@@ -16,6 +16,9 @@ This is the repository for the ELEC5622 Health Application
 * `pip3 install django`
 * `pip3 install django-channels`
 * `pip3 install psycopg2`
+* `pip3 install channels`
+* `pip3 install asgiref==2.3`
+* `pip3 install channels_redis`
 
 ## Runtime instructions
 
@@ -26,4 +29,4 @@ This is the repository for the ELEC5622 Health Application
 
 ### Running
 * Run the server with `python3 mysite/manage.py runserver`
-* The server is accessible at `http://localhost:8000/`
+* The server is accessible at `http://localhost:8000/ehealth/`
