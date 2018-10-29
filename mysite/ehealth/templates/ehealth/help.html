@@ -4,10 +4,30 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <script src="main.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+    <style>
+            .panel-danger>.panel-heading {
+              color: #FFF;
+              background-color: #af0000;
+            }
+            .panel {
+              border: 0px;
+            }
+            .panel-heading {
+              border-top-left-radius: 0px;
+              border-top-right-radius: 0px;
+            }
+            .red {
+                text-align: center;
+                background-image: linear-gradient(to bottom, #AA0000, #DD1111) !important;
+                webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #8c182e, 0 4px 2px rgba(0, 0, 0, .5) !important;
+                moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #8c182e, 0 4px 2px rgba(0, 0, 0, .5) !important;
+                box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #8c182e, 0 4px 2px rgba(0, 0, 0, .5) !important;
+            }
+            
+            </style>
     <style>
         .push_button {
             position: relative;
@@ -83,8 +103,8 @@
             
     </style>
 </head>
-<body>
-    <ul class="nav nav-pills">
+<body style="text-align: center;">
+    <ul class="nav nav-pills" style="background: #222;">
         <li role="presentation" ><a href="dashboard">Home</a></li>
         <li role="presentation"><a href="map">Nearest AED'S</a></li>
         <li role="presentation" class="active"><a href="help">SOS</a></li>
@@ -104,7 +124,7 @@
       </div>
       
       
-    <a class="push_button red" href="tel:5551234567">Call Ambulance</a>
+    <a class="push_button red" style="display: inline-block;" href="tel:5551234567">Call Ambulance</a>
       
 </body>
 </html>
