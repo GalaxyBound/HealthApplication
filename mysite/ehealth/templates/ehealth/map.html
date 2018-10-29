@@ -4,10 +4,22 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <script src="main.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+    <style>
+        .panel-danger>.panel-heading {
+          color: #FFF;
+          background-color: #af0000;
+        }
+        .panel {
+          border: 0px;
+        }
+        .panel-heading {
+          border-top-left-radius: 0px;
+          border-top-right-radius: 0px;
+        }
+        </style>
     <style>
        /* Set the size of the div element that contains the map */
       #map {
@@ -18,14 +30,14 @@
     </style>
   </head>
   <body>
-        <ul class="nav nav-pills">
+        <ul class="nav nav-pills" style="background: #222;">
                 <li role="presentation" ><a href="dashboard">Home</a></li>
                 <li role="presentation" class="active"><a href="map">Nearest AED'S</a></li>
                 <li role="presentation"><a href="help">SOS</a></li>
                 <li role="presentation"><a href="login">Sign Out</a></li>
         </ul>
 
-        <div id="map" style="width:600px;height:400px;margin-left:auto;margin-right:auto;"></div>
+        <div id="map" style="width:100%;height:400px;margin-left:auto;margin-right:auto;"></div>
         <script>
           var map;
           function initMap() {
@@ -90,7 +102,7 @@
         <p>This is a map that give the locations of Automated External Defibrillators nearest to you, in case assistance is required.</p>
 
         <p>The ADE's are marked in RED</p>
-        <p>The Patient's location is marked in GREEN</p>
+        <p>The Patient's location is marked with a Blue P</p>
       </div>
     </div>
   </body>
